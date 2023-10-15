@@ -1,0 +1,59 @@
+{
+  "name": "User Story Card",
+  "version": "1.0.0",
+  "description": "A user story card following the very common format.",
+  "format": "As a <role>, I want <goal/desire> so that <benefit>.",
+  "author": "John Doe",
+  "parsing-nodes": {
+    "UserStoryCard": {
+      "type": "group",
+      "name": "User Story Card",
+      "preprocess": [
+        "to-lowercase",
+        "trim-whitespace"
+      ],
+      "tokenize": [
+        "fill-placeholders"
+      ],
+      "apply": [
+        "placeholders-not-empty"
+      ],
+      "children": [
+        {
+          "type": "starts-with",
+          "options": {
+            "equals": "as a"
+          }
+        },
+        {
+          "type": "placeholder",
+          "name": "role"
+        },
+        {
+          "type": "sequence",
+          "options": {
+            "equals": "i want"
+          }
+        },
+        {
+          "type": "sequence",
+          "options": {
+            "equals": "so that"
+          }
+        },
+        {
+          "type": "placeholder",
+          "name": "goal"
+        },
+        {
+          "type": "ends-with",
+          "apply": [
+            {
+              "equals": "."
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

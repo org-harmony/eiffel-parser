@@ -1,0 +1,91 @@
+{
+  "name": "Funktionale Anforderung",
+  "version": "1.0.0",
+  "description": "Eine funktionale Anforderung (ESFA) nach PARIS angepasst auf die Formulierungen der Firma XY.",
+  "author": "John Doe",
+  "format": "Das System <Systemname> muss|soll|sollte|wird <Rolle> ermöglichen, <Ziel>, damit <Begründung>.",
+  "preprocess": [
+    "toLowercase",
+    "trimWhitespace",
+    "trimPunctuation"
+  ],
+  "rules": {
+    "das-system": {
+      "name": "\"das System\"",
+      "type": "text",
+      "value": "das system"
+    },
+    "systemname": {
+      "name": "Systemname",
+      "type": "placeholder"
+    },
+    "modalverb": {
+      "name": "Modalverb",
+      "type": "text-enum",
+      "values": [
+        "muss",
+        "soll",
+        "sollte",
+        "kann",
+        "wird"
+      ]
+    },
+    "rolle": {
+      "name": "Rolle",
+      "type": "placeholder"
+    },
+    "ermöglichen": {
+      "name": "\"ermöglichen\"",
+      "type": "text",
+      "value": "ermöglichen"
+    },
+    "ziel": {
+      "name": "Ziel",
+      "type": "placeholder"
+    },
+    "damit": {
+      "name": "\"damit\"",
+      "type": "text",
+      "value": "damit",
+      "optional": true
+    },
+    "begründung": {
+      "name": "Begründung",
+      "type": "placeholder",
+      "optional": true
+    },
+    "wenn": {
+      "name": "\"wenn\"",
+      "type": "text",
+      "value": "wenn"
+    },
+    "bedingung": {
+      "name": "Bedingung",
+      "type": "placeholder"
+    }
+  },
+  "variations": {
+    "Ohne Bedingung": [
+      "das-system",
+      "systemname",
+      "modalverb",
+      "rolle",
+      "ermöglichen",
+      "ziel",
+      "damit",
+      "begründung"
+    ],
+    "Mit Bedingung": [
+      "wenn",
+      "bedingung",
+      "modalverb",
+      "das-system",
+      "systemname",
+      "rolle",
+      "ermöglichen",
+      "ziel",
+      "damit",
+      "begründung"
+    ]
+  }
+}
